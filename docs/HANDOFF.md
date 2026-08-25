@@ -16,9 +16,10 @@
 ## Status (2026-08-25)
 
 - Phase 1 auto crossings: done  
-- Human labels on **102/102 required RESCUEs**: done (H1 provisionally supported)  
-- Recommended controls: **not** labeled  
-- Phase 2 resampling / SPAR Google Doc: **not** started
+- Human labels on **102/102 required RESCUEs**: done  
+- Claude recommended controls **20/20**: done (rescue↔control contrast strengthens H1)  
+- Qwen/Inkling controls: still blank (optional)  
+- Phase 2 resampling / SPAR Google Doc: **not** started — **next main work**
 
 ## Data location
 

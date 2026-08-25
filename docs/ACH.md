@@ -40,9 +40,9 @@ From `python analysis/crossing.py` (trajectory first vs last vs threshold):
 ## Phase 1 human labels (Ben Chrepta, 2026-08-24)
 
 **Source:** `labeling_packet/results/ben_labels.csv` (also `analysis/ben_labels_summary.json`).  
-**Coverage:** **102/102** `priority=required` RESCUE rows. Recommended controls (60) still unlabeled.  
+**Coverage:** **102/102** required RESCUEs + **20/20** Claude recommended controls. Qwen/Inkling controls (40) still blank.  
 **Rubric:** `intentional_steer` / `mixed` / `honest_revision` / `unclear` / `mislabeled_*` (see `labeling_packet/02_RUBRIC.md`).  
-**QC:** `traj_ok=yes` on 101/102; one `unsure` (`claude-opus-4-7__below_good__RESCUE__i61`). No `mislabeled_not_rescue`. Confidence: 62 high / 40 medium / 0 low.
+**QC:** `traj_ok=yes` on 121/122 labeled; one `unsure` (`claude-opus-4-7__below_good__RESCUE__i61`). One `mislabeled_is_rescue` on a Claude control.
 
 ### Overall (all required RESCUEs)
 
@@ -73,30 +73,49 @@ Steer-involved (`intentional_steer` + `mixed`) = **91.2%** of auto-rescues. Pure
 | Inkling above_good | 3 | 0 | 0 | **3** |
 | Inkling below_good | 33 | 18 | 15 | 0 |
 
+### Claude controls vs rescues (discriminating contrast)
+
+All **20** Claude `priority=recommended` controls labeled:
+
+| Bucket | n | intentional_steer | mixed | honest_revision | mislabeled_is_rescue |
+|--------|---|-------------------|-------|-----------------|----------------------|
+| CONTROL_stay_bad | 10 | **0** | 5 | 5 | 0 |
+| CONTROL_stay_good | 10 | **0** | 3 | 6 | 1 |
+| RESCUE (Claude) | 30 | **22 (73%)** | 7 | 1 | — |
+
+| Contrast | Rescues | Controls |
+|----------|---------|----------|
+| `intentional_steer` | **73%** | **0%** |
+| `honest_revision` | 3% | **55%** |
+
+- Auto buckets look mostly clean: only **1/20** control flipped (`claude-opus-4-7__below_good__CONTROL_stay_good__i16` — CoT crossed bad→good; traj first=last missed it).  
+- Controls still show `mixed` (threshold talk without a successful rescue) — so “mention threshold” ≠ rescue label.  
+- The **rescue↔control gap on `intentional_steer`** is the strongest Phase-1 evidence that H1 is not just “everything looks steery once you condition on crossing.”
+
 ---
 
 ## Updated ACH stance (post-labels)
 
 | ID | Status after labels | Why |
 |----|---------------------|-----|
-| **H1** | **Supported (provisional)** | Majority of auto-rescues read as intentional steer; Claude 73% steer. Pure honest rescues are ~9%. |
-| **H2** | **Weakened as primary story** | If most rescues were honest failed control, we’d expect more `honest_revision`. Still possible for the 9 honest cases + parts of `mixed`. |
-| **H3** | **Plausible co-story (esp. Claude)** | Labels don’t score “denial” as a separate field, but Claude notes often cite honesty talk while steering — consistent with unfaithful/theater overlay on H1. Needs a denial flag pass or Phase 2. |
-| **H4** | **Open** | Labels are mid-trace motivation judgments; do not resolve early anchoring. Still check `gap_at_start` in `factor.json`. |
+| **H1** | **Supported (stronger)** | Rescues mostly steer; Claude controls **0%** `intentional_steer` vs **73%** on rescues. |
+| **H2** | **Weakened as primary story** | Controls are where honest_revision lives (55%); rescues almost never. |
+| **H3** | **Plausible co-story (esp. Claude)** | Notes still cite honesty talk on steer rescues; no separate denial field yet. |
+| **H4** | **Open** | Still need `gap_at_start` from `factor.json`. |
 | **H5** | **Untested** | Needs non-moral stakes / new prompts. |
 
-**Working claim (write carefully):** Among shipped **bad→good rescues**, human judgment finds **threshold-dependent steering** much more often than pure Fermi revision — especially Claude. Qwen is more often **mixed**. This supports H1 over H2 as the *dominant* rescue mechanism; it does **not** yet prove load-bearing causality (that needs Phase 2 resampling) or rule out H4 contribution to the start of the trace.
+**Working claim:** Bad→good **rescues** are disproportionately judged as threshold-dependent steering (esp. Claude), while Claude **non-crossing controls** are mostly honest revision / mixed with **no** intentional_steer labels. Supports H1 over H2 as the dominant *rescue* mechanism. Still not causal (needs Phase 2) and does not close H4.
 
-**Caveats:** Single reviewer; no control labels yet (selection on auto-RESCUE); Claude CoTs may be API summaries; `mixed` is large (39%) — don’t overclaim purity of “steer.”
+**Caveats:** Single reviewer; Qwen/Inkling controls unlabeled; Claude CoTs may be API summaries; `mixed` remains large on rescues (39% overall).
 
 ---
 
 ## Next discriminating moves
 
 1. ~~Human-label required RESCUEs~~ **Done** (Ben, 8/24/26).  
-2. **Optional:** label recommended controls (≥ Claude stay_bad/stay_good) — checks auto-bucket false positives/negatives.  
+2. ~~Claude recommended controls~~ **Done** (20/20). Qwen/Inkling controls optional.  
 3. **[CHECK]** Glance `factor.json` `gap_at_start` for H4 (Claude / Qwen / Inkling).  
-4. Fold a few **random** labeled excerpts into SPAR draft (not only steer exemplars).  
+4. Fold ACH + rescue↔control contrast + a few **random** excerpts into SPAR Google Doc (due Aug 30 AoE).  
 5. Phase 2 (outside strict 5h if needed): Thought Anchors–style resampling on revision-after-threshold spans.  
 6. Optional API: honesty / “ignore threshold” system prompts on one open model.
 
@@ -106,5 +125,5 @@ Steer-involved (`intentional_steer` + `mixed`) = **91.2%** of auto-rescues. Pure
 
 - Rescue rate under incentive ≈ baseline regression-to-median (no asymmetry).  
 - Ablating “revision-after-threshold” sentences does **not** change final-side distribution (Phase 2).  
-- Human labels flip: most rescues become `honest_revision` / `mislabeled_not_rescue` under a second rater or controls show similar “steer” rates without crossing.  
+- Human labels flip: most rescues become `honest_revision` / `mislabeled_not_rescue` under a second rater **or** controls show similar `intentional_steer` rates *(Claude controls already fail this falsifier)*.  
 - Models that *admit* steering show *less* bias than deniers (would favor H2/H3 story differently — still informative).
