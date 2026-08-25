@@ -7,11 +7,18 @@
 
 ## Open these first
 
-1. `docs/ACH.md` — hypotheses  
-2. `docs/CHECKLIST.md` — what Ben must verify  
-3. `analysis/check_samples/claude-opus-4-7.md` — start human review here (clearest “deny while steering” vibe)  
-4. `analysis/check_samples/qwen3.5-122b-a10b.md`  
+1. `docs/ACH.md` — hypotheses + **Ben’s 8/24 human labels folded in**  
+2. `docs/CHECKLIST.md` — remaining [CHECK]s  
+3. `labeling_packet/results/ben_labels.csv` — filled required RESCUEs  
+4. `analysis/ben_labels_summary.json` — quick counts  
 5. `README.md`
+
+## Status (2026-08-25)
+
+- Phase 1 auto crossings: done  
+- Human labels on **102/102 required RESCUEs**: done (H1 provisionally supported)  
+- Recommended controls: **not** labeled  
+- Phase 2 resampling / SPAR Google Doc: **not** started
 
 ## Data location
 
