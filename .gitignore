@@ -7,3 +7,6 @@ vendor/value-leakage/.venv/
 vendor/value-leakage/.env
 analysis/**/*.png
 !.gitkeep
+
+# generated archives
+*.zip
