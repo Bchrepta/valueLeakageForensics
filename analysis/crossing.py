@@ -1,7 +1,6 @@
-"""Phase-1 forensics: trajectory side-crossings + coarse verbal flags.
+"""Trajectory side-crossings on Aditya's shipped trajectories.json.
 
-Uses Aditya's shipped trajectories.json (judge-extracted estimate sequences).
-Does not call any API.
+Also logs coarse regex verbal flags (noisy; not used for claims).
 
   python analysis/crossing.py
   python analysis/crossing.py --models qwen3.5-122b-a10b,claude-opus-4-7
