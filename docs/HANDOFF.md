@@ -19,7 +19,7 @@
 - Human labels on **102/102 required RESCUEs**: done  
 - Claude recommended controls **20/20**: done (rescue↔control contrast strengthens H1)  
 - Qwen/Inkling controls: still blank (optional)  
-- Phase 2 resampling / SPAR Google Doc: **not** started — **next main work**
+- Phase 2 resampling / SPAR Google Doc: **draft ready** → `docs/SPAR_TAKEHOME_DRAFT.md` (Ben: rewrite voice + paste quotes)
 
 ## Data location
 

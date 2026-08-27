@@ -22,10 +22,13 @@ Anything marked **[CHECK]** is load-bearing. Do not trust agent regex / summarie
 
 ## Do not skip when writing the SPAR doc later
 
-- [ ] Include **random** (not cherry-picked) CoT excerpts.  
-- [ ] Lead with ACH + Claude rescue↔control contrast table.  
-- [ ] State limitations: single rater; Claude summaries; Qwen/Inkling controls unlabeled; no Phase 2 causality yet.  
-- [ ] Hours spent note if under 5h take-home.
+- [ ] Copy `docs/SPAR_TAKEHOME_DRAFT.md` → Google Doc; **rewrite exec summary in your voice**.  
+- [ ] Include **random** CoT **quotes** (not only label notes) for the six sample_ids in §5.  
+- [ ] Lead with ACH + Claude rescue↔control contrast.  
+- [ ] Fill **hours spent**; say if >5h.  
+- [ ] State limitations: single rater; Claude summaries; no Phase 2 causality.  
+- [ ] Email subject: `Model Forensics SPAR take-home Ben Chrepta` **[CHECK exact]**.  
+- [ ] Link sharing: anyone with link can view.
 
 ## Verification log
 
