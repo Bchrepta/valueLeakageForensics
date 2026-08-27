@@ -115,9 +115,8 @@ All **20** Claude `priority=recommended` controls labeled:
 1. ~~Human-label required RESCUEs~~ **Done** (Ben, 8/24/26).  
 2. ~~Claude recommended controls~~ **Done** (20/20). Qwen/Inkling controls optional.  
 3. **[CHECK]** Glance `factor.json` `gap_at_start` for H4 (Claude / Qwen / Inkling).  
-4. Fold ACH + rescue↔control contrast + a few **random** excerpts into SPAR Google Doc (due Aug 30 AoE).  
-5. Phase 2 (outside strict 5h if needed): Thought Anchors–style resampling on revision-after-threshold spans.  
-6. Optional API: honesty / “ignore threshold” system prompts on one open model.
+4. Phase 2: Thought Anchors–style resampling on revision-after-threshold spans.  
+5. Optional API: honesty / “ignore threshold” system prompts on one open model.
 
 ---
 
