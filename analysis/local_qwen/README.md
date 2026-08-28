@@ -41,7 +41,23 @@ Outputs land in `analysis/local_qwen/runs/<model>_<stamp>/`:
 - `resample_summary.json` — frac_flip when regenerating after revision cut
 - `*.json` rollouts with full text
 
+## P0 (Neel deepening)
+```powershell
+git pull
+.\scripts\run_p0_3080.ps1
+```
+Does: threshold-parking audit, **disclose** prompt run + score, **Gilg-lite activation steering** turn-off (`steer_turnoff.py`).
+
+Manual pieces:
+```powershell
+python -m analysis.local_qwen.threshold_parking_audit --run_dir <base> --run_dir <turnoff> --out analysis\local_qwen\results_3080\threshold_parking_3080.json
+python -m analysis.local_qwen.run_donation_bet --model Qwen/Qwen2.5-3B-Instruct --n 24 --device cuda --system_prompt disclose --tag disclose --threshold 15000000
+python -m analysis.local_qwen.score_disclose --run_dir <disclose_run>
+python -m analysis.local_qwen.steer_turnoff --run_dir <base> --model Qwen/Qwen2.5-3B-Instruct --device cuda --n 16 --alpha 0.4
+```
+
 ## Notes / limitations
 - No Claude estimate/trajectory judges — regex parsing (document this for Neel).
 - Small models may show weaker leakage than Qwen 122B; a null result is still informative.
 - `--n 24` is a pilot; bump to 40–50 if time allows.
+- 3B incentive answers often **park at exactly the threshold** — always report `frac_parked` beside MRF-proxy.
