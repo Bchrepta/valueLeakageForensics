@@ -1,4 +1,4 @@
-# Option 1 — Gilg predict + mediate on Qwen3-4B (RTX 3080)
+# Option 1 - Gilg predict + mediate on Qwen3-4B (RTX 3080)
 # Neel: linear direction that PREDICTS and CAUSALLY MEDIATES value leakage.
 # Primary causal metric: mean frac_good (not parked%).
 #
@@ -14,7 +14,7 @@ $Run4 = Get-ChildItem analysis\local_qwen\runs -ErrorAction SilentlyContinue |
   Select-Object -First 1
 
 if (-not $Run4) {
-  Write-Host "No Qwen3-4B run found — sampling donation bet n=24 …"
+  Write-Host "No Qwen3-4B run found - sampling donation bet n=24 ..."
   python -m analysis.local_qwen.run_donation_bet `
     --model $Model4 `
     --n 24 `
@@ -50,9 +50,9 @@ python -m analysis.local_qwen.gilg_mediate `
 
 Write-Host ""
 Write-Host "Done. Copy:"
-Write-Host "  $($Run4.FullName)\gilg_mediate_option1_gilg\predict_summary.json"
-Write-Host "  $($Run4.FullName)\gilg_mediate_option1_gilg\mediate_summary.json"
+Write-Host ("  {0}\gilg_mediate_option1_gilg\predict_summary.json" -f $Run4.FullName)
+Write-Host ("  {0}\gilg_mediate_option1_gilg\mediate_summary.json" -f $Run4.FullName)
 Write-Host "into analysis\local_qwen\results_3080\ and paste tables back to the agent."
 Write-Host ""
 Write-Host "Success rule: outcome LOO AUROC >> 0.5; steer -alpha lowers mean_frac_good vs zero AND vs random."
-Write-Host "After Option 1: Option 2 = Claude rescue sentence-resample (docs/OPTION2_FORENSICS.md)."
+Write-Host "After Option 1: Option 2 = Claude rescue sentence-resample (see docs/OPTION2_FORENSICS.md)."
