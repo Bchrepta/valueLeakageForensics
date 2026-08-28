@@ -41,14 +41,43 @@ Outputs land in `analysis/local_qwen/runs/<model>_<stamp>/`:
 - `resample_summary.json` — frac_flip when regenerating after revision cut
 - `*.json` rollouts with full text
 
-## Deepening (layer×α + better directions + Qwen3-4B)
+## Option 1 — Gilg predict + mediate (Qwen3-4B) **← run this next**
+
+Neel’s Value Leakage ask: direction that **predicts** and **causally mediates**.
+Primary causal metric = **mean frac_good** (not parked%).
+
+```powershell
+git pull
+.\scripts\run_option1_gilg_3080.ps1
+```
+
+Or stepwise:
+
+```powershell
+$env:PYTHONPATH = (Get-Location).Path
+$Run4 = "...\analysis\local_qwen\runs\Qwen3-4B_20260828_004946_qwen3_4b"
+
+python -m analysis.local_qwen.gilg_mediate `
+  --run_dir $Run4 `
+  --model Qwen/Qwen3-4B --device cuda --load_in_4bit `
+  --layers=8,12,16,20,24,28 `
+  --alphas=-0.4,-0.2,0 `
+  --n 16 --exclude_parked --tag option1_gilg
+```
+
+Outputs: `gilg_mediate_option1_gilg/predict_summary.json` + `mediate_summary.json`.  
+Success: LOO AUROC ≫ 0.5; `steer_-0.4` lowers `mean_frac_good` vs zero **and** vs random.
+
+After that → Option 2 Claude forensics: `docs/OPTION2_FORENSICS.md`.
+
+## Deepening (older layer×α parking sweeps)
 
 ```powershell
 git pull
 .\scripts\run_deepen_3080.ps1
 ```
 
-Or stepwise — see script comments. Primary metric in `sweep_summary.json` → `table[].mean_frac_parked`.
+Or stepwise — see script comments. Primary metric in older `sweep_summary.json` → `table[].mean_frac_parked`.
 
 Bridge writeup (offline): `docs/BRIDGE_SHIPPED_VS_LOCAL.md`
 

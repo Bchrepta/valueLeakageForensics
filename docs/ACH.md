@@ -113,9 +113,10 @@ Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_ST
 
 ## Next
 
-1. **Write Neel Google Doc** (exec summary ≤~600 words) + MATS form Qs — due Sept 4 PT.  
-2. Optional P1 only if hours remain: Claude denial flags; Qwen controls; stricter resample on non-parked traces.  
-3. Do **not** chase more 3B sweeps before the write-up.
+1. **Option 1 (3080):** `.\scripts\run_option1_gilg_3080.ps1` — Qwen3-4B Gilg predict (LOO AUROC) + mediate (`mean_frac_good` primary).  
+2. **Option 2 (after 1):** Claude rescue load-bearing resample — `docs/OPTION2_FORENSICS.md`.  
+3. Then Neel Google Doc (≤~600-word exec summary) + MATS form — due Sept 4 PT.  
+4. Do **not** chase more 3B parking sweeps.
 
 ## Falsifiers for H1
 
