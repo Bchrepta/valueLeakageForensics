@@ -90,20 +90,32 @@ Not shown: causal load-bearing of revision-after-threshold sentences (needs loca
 
 `analysis/revision_taxonomy.py` on 102 RESCUEs: **86%** have a motivated-backtrack motif (threshold/stake near a revision cue). Rates are **similar across human labels** (steer/mixed/honest all ~85–89%) — motifs are near-ceiling in rescues and **do not replace** Ben’s labels. Claude motif rate is lower (53%), consistent with summarized CoTs. Honesty+stake co-mention: 94% overall.
 
-### Local 3080 causal pilots (code ready)
+### Local 3080 causal pilots (Qwen2.5-3B-Instruct, n=16–24)
 
-`analysis/local_qwen/` + `scripts/run_local_3080.sh`: Donation Bet on Qwen2.5-3B, Thought Anchors–style resampling, `ignore_bet` turn-off. Cloud has no GPU — **Ben must run on desktop 3080** (`N=24+`). Tiny CPU smoke only proved the pipeline (`smoke_pipeline_proof.json`).
+| Check | Result |
+|-------|--------|
+| Threshold parking | **58–67%** of incentive answers == thr; **80%** of below_good “goods” are parked |
+| Prompt `ignore_bet` | MRF-proxy flipped sign; parking only partly reduced |
+| Disclose prompt | **~12.5% admit** (mostly “neither”); does **not** reliably disclose |
+| Resample revision cuts | mean frac_flip ≈ **0.11** — weak load-bearing on 3B |
+| **Steer −0.4** (above−below dir, L18) | Parking **14–19%** (vs 56% zero; vs **87–100%** random −0.4) |
+| Steer 0 / +0.4 / random | Random control collapses to thr-parroting; +0.4 noisier (many null parses) |
 
-**Caveats.** Single rater; large `mixed` share (39%); Claude CoTs may be API summaries; Qwen/Inkling controls unlabeled.
+**Read for Neel.** On 3B the dominant local failure mode is **threshold parroting**, not Claude-style mid-CoT steer. A **condition-contrast residual direction** is still causal vs random (cuts parking). That is a Gilg-lite “turn off / mediate” result, but it mediates *parking/condition encoding* more cleanly than moral bias per se. Lead the app with **shipped Claude rescue↔control labels**; use 3B as the mechanistic pilot with these caveats.
+
+Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_STATUS.md`.
+
+**Caveats.** Single rater; large `mixed` share (39%); Claude CoTs may be API summaries; Qwen/Inkling controls unlabeled; local n small / high variance.
 
 ## Next
 
-1. **Run** `bash scripts/run_local_3080.sh` on the 3080; record `mrf_proxy` + resample `mean_frac_flip`.  
-2. Neel exec summary / form (due Sept 4 PT).  
-3. Optional: remaining controls; disclose prompt; H5 non-moral stakes; later API/122B.
+1. **Write Neel Google Doc** (exec summary ≤~600 words) + MATS form Qs — due Sept 4 PT.  
+2. Optional P1 only if hours remain: Claude denial flags; Qwen controls; stricter resample on non-parked traces.  
+3. Do **not** chase more 3B sweeps before the write-up.
 
 ## Falsifiers for H1
 
 - Incentive rescue rate ≈ baseline regression-to-median.
 - Resampling ablation doesn’t move final-side distribution.
 - Second rater (or remaining controls) collapses the rescue↔control `intentional_steer` gap.
+- Local steer effect is only random-direction noise *(already fails this: random ≠ condition direction on parking)*.
