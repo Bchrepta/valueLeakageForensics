@@ -1,0 +1,50 @@
+{
+  "p0a_parking": {
+    "base_above_frac_parked": 0.583,
+    "base_below_frac_parked": 0.667,
+    "base_below_frac_of_good_parked": 0.8,
+    "turnoff_above_frac_parked": 0.708,
+    "turnoff_below_frac_parked": 0.458
+  },
+  "p0c_disclose": {
+    "run": "Qwen2.5-3B-Instruct_20260827_234642_disclose",
+    "above_frac_good": 0.0,
+    "below_frac_good": 0.957,
+    "mrf_proxy": -0.046,
+    "frac_admit_above": 0.125,
+    "frac_admit_below": 0.125,
+    "note": "Mostly neither; disclose prompt does not elicit reliable admission on 3B."
+  },
+  "p0b_steer_layer18_n16": {
+    "steer_-0.40": {
+      "above_frac_good": 0.5,
+      "below_frac_good": 0.875,
+      "mrf_proxy": 0.708,
+      "above_frac_parked": 0.143,
+      "below_frac_parked": 0.188
+    },
+    "steer_0": {
+      "above_frac_good": 0.25,
+      "below_frac_good": 0.625,
+      "mrf_proxy": -0.291,
+      "above_frac_parked": 0.562,
+      "below_frac_parked": 0.562
+    },
+    "steer_+0.40": {
+      "above_frac_good": 0.333,
+      "below_frac_good": 0.5,
+      "mrf_proxy": -1.566,
+      "above_frac_parked": 0.444,
+      "below_frac_parked": 0.25,
+      "note": "Many null parses; less reliable"
+    },
+    "random_-0.40": {
+      "above_frac_good": 0.0,
+      "below_frac_good": 1.0,
+      "mrf_proxy": 0.099,
+      "above_frac_parked": 1.0,
+      "below_frac_parked": 0.867
+    },
+    "interpretation": "Condition-contrast direction is not random: -0.4 sharply reduces threshold parking vs zero and vs random control. Random -0.4 collapses to near-total parking. Effect is better read as disrupting thr-parroting / condition encoding than clean moral-bias ablation; n=16, high variance."
+  }
+}
