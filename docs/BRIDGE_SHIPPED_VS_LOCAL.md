@@ -59,3 +59,8 @@ Qwen3-4B is the better local organism for Neel on behavior (less parking, real b
 2. **Parked-dir sweep 3B** — only mild L12 win; weaker than outcome@L24.
 3. **Outcome sweep Qwen3-4B** — baseline parking already low; L12 −0.4 beats random on parking but many nulls; not a clean moral ablation.
 4. Keep Claude labels as the behavioral headline; don’t overclaim 3B = Opus. Details: `analysis/local_qwen/results_3080/steer_sweep_readout.json`.
+
+## Next (Option 1)
+
+Finish Neel’s Gilg ask on **Qwen3-4B**: `scripts/run_option1_gilg_3080.ps1`  
+→ LOO AUROC (predict) + steer vs random on **mean_frac_good** (mediate). Then Option 2: `docs/OPTION2_FORENSICS.md`.
