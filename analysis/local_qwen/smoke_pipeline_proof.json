@@ -1,0 +1,7 @@
+{
+  "note": "CPU smoke only (Qwen2.5-0.5B-Instruct, n=2). NOT for Neel claims. Proves pipeline runs. Re-run on 3080 with Qwen2.5-3B-Instruct n>=24.",
+  "donation_bet_mrf_proxy": 0.0634,
+  "turnoff_mrf_proxy": -0.0922,
+  "resample_n_traces": 1,
+  "resample_mean_frac_flip": 0.0
+}
