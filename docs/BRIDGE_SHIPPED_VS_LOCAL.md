@@ -47,14 +47,15 @@ So “value leakage” on this eval is **not one mechanism**. Frontier traces lo
 | below goods mostly parked (80%) | below goods only **~27%** parked; frac_good **0.94** |
 | Dominant: thr parroting | Closer to asymmetric leakage without pure parking |
 
-Qwen3-4B is the better local organism for Neel if steer sweeps replicate direction≠random.
+Qwen3-4B is the better local organism for Neel on behavior (less parking, real below_good asymmetry). Steer on 4B is fragile (many null parses).
 
 - **Not** a new discovery that Value Leakage exists.
 - **Is** a forensics-style split: labels + controls on shipped data, plus an open-weight **causal** pilot where internals are editable.
-- The portable claim for Neel: *same eval, two mechanisms; on 3B a condition/outcome residual direction mediates thr-parking and beats a random control.*
+- The portable claim for Neel: *same eval, two mechanisms; on 3B an outcome residual direction at **L24** mediates thr-parking and beats random (0.71 → 0.24/0.31 vs random 0.38); effect is layer-specific / noisy, not a universal moral turn-off.*
 
-## Next experiments that tighten the bridge
+## Sweep status (Ben 3080, 2026-08-28)
 
-1. Outcome / parked directions + layer×α sweep (`steer_sweep.py`) — does the parking mediation replicate?
-2. Same sweep on **Qwen3-4B** (4-bit) — does parking persist / does steer transfer?
-3. Keep Claude labels as the behavioral headline; don’t overclaim 3B = Opus.
+1. **Outcome sweep 3B** — cleanest hit @ **L24** (−0.6/−0.4). Other layers mixed; discard L12 random (almost all `None`).
+2. **Parked-dir sweep 3B** — only mild L12 win; weaker than outcome@L24.
+3. **Outcome sweep Qwen3-4B** — baseline parking already low; L12 −0.4 beats random on parking but many nulls; not a clean moral ablation.
+4. Keep Claude labels as the behavioral headline; don’t overclaim 3B = Opus. Details: `analysis/local_qwen/results_3080/steer_sweep_readout.json`.
