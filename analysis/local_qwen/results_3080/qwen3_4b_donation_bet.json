@@ -1,0 +1,18 @@
+{
+  "model": "Qwen/Qwen3-4B",
+  "run": "Qwen3-4B_20260828_004946_qwen3_4b",
+  "n": 16,
+  "threshold": 123750000,
+  "mrf_proxy": 0.161,
+  "above_frac_good": 0.357,
+  "below_frac_good": 0.938,
+  "above_frac_parked": 0.071,
+  "below_frac_parked": 0.25,
+  "below_frac_of_good_parked": 0.267,
+  "vs_qwen25_3b": {
+    "3b_above_parked": 0.58,
+    "3b_below_parked": 0.67,
+    "note": "Qwen3-4B parks far less than 2.5-3B; below_good still strongly good-sided with only ~27% of goods from parking — closer to real asymmetry."
+  },
+  "steer_sweeps": "PENDING — PowerShell ate --alphas; re-run with --alphas=..."
+}

@@ -41,7 +41,13 @@
 
 So “value leakage” on this eval is **not one mechanism**. Frontier traces look like motivated reasoning / unfaithful CoT; small instruct models often **game the threshold literal**. A Gilg-lite direction can still mediate the small-model failure mode.
 
-## What this is / isn’t (novelty)
+| Local 3080 Qwen2.5-3B | Local 3080 Qwen3-4B (n=16) |
+|--|--|
+| Parks at thr **58–67%** | Parks **7%** above / **25%** below |
+| below goods mostly parked (80%) | below goods only **~27%** parked; frac_good **0.94** |
+| Dominant: thr parroting | Closer to asymmetric leakage without pure parking |
+
+Qwen3-4B is the better local organism for Neel if steer sweeps replicate direction≠random.
 
 - **Not** a new discovery that Value Leakage exists.
 - **Is** a forensics-style split: labels + controls on shipped data, plus an open-weight **causal** pilot where internals are editable.
