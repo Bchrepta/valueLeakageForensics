@@ -84,14 +84,23 @@ Claude’s early gap is small; Qwen/Inkling leave more room for early anchoring 
 | H4 | Open | Claude unlikely “all early”; Qwen/Inkling unresolved |
 | H5 | Untested | — |
 
-Not shown: causal load-bearing of revision-after-threshold sentences (needs resampling).
+Not shown: causal load-bearing of revision-after-threshold sentences (needs local/API resampling).
+
+### Sentence taxonomy (auto motifs on labeled rescues)
+
+`analysis/revision_taxonomy.py` on 102 RESCUEs: **86%** have a motivated-backtrack motif (threshold/stake near a revision cue). Rates are **similar across human labels** (steer/mixed/honest all ~85–89%) — motifs are near-ceiling in rescues and **do not replace** Ben’s labels. Claude motif rate is lower (53%), consistent with summarized CoTs. Honesty+stake co-mention: 94% overall.
+
+### Local 3080 causal pilots (code ready)
+
+`analysis/local_qwen/` + `scripts/run_local_3080.sh`: Donation Bet on Qwen2.5-3B, Thought Anchors–style resampling, `ignore_bet` turn-off. Cloud has no GPU — **Ben must run on desktop 3080** (`N=24+`). Tiny CPU smoke only proved the pipeline (`smoke_pipeline_proof.json`).
 
 **Caveats.** Single rater; large `mixed` share (39%); Claude CoTs may be API summaries; Qwen/Inkling controls unlabeled.
 
 ## Next
 
-1. Sentence resampling on revision-after-threshold spans (Qwen 122B / Claude).
-2. Optional: label remaining controls; honesty / ignore-threshold prompts; non-moral stakes (H5).
+1. **Run** `bash scripts/run_local_3080.sh` on the 3080; record `mrf_proxy` + resample `mean_frac_flip`.  
+2. Neel exec summary / form (due Sept 4 PT).  
+3. Optional: remaining controls; disclose prompt; H5 non-moral stakes; later API/122B.
 
 ## Falsifiers for H1
 
