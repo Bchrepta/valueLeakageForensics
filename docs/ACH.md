@@ -99,9 +99,13 @@ Not shown: causal load-bearing of revision-after-threshold sentences (needs loca
 | Disclose prompt | **~12.5% admit** (mostly “neither”); does **not** reliably disclose |
 | Resample revision cuts | mean frac_flip ≈ **0.11** — weak load-bearing on 3B |
 | **Steer −0.4** (above−below dir, L18) | Parking **14–19%** (vs 56% zero; vs **87–100%** random −0.4) |
-| Steer 0 / +0.4 / random | Random control collapses to thr-parroting; +0.4 noisier (many null parses) |
+| Outcome-dir layer sweep (3B, n=12) | **Best clean hit @ L24:** parked 0.71 → **0.24**/0.31 with −0.6/−0.4 vs random 0.38 |
+| Parked-dir sweep (3B) | Only mild L12 win; L18/L24 weak or wrong-way |
+| Qwen3-4B donation bet (n=16) | Parks **7%/25%**; below frac_good **0.94** with only ~27% of goods parked |
+| Qwen3-4B outcome steer | Fragile (many nulls); L12 −0.4 beats random on parking |
 
-**Read for Neel.** On 3B the dominant local failure mode is **threshold parroting**, not Claude-style mid-CoT steer. A **condition-contrast residual direction** is still causal vs random (cuts parking). That is a Gilg-lite “turn off / mediate” result, but it mediates *parking/condition encoding* more cleanly than moral bias per se. Lead the app with **shipped Claude rescue↔control labels**; use 3B as the mechanistic pilot with these caveats.
+**Read for Neel.** On 3B the dominant local failure mode is **threshold parroting**, not Claude-style mid-CoT steer. A residual direction can mediate parking **at some layers** (condition @L18 earlier; outcome @L24 in sweep) and beat random — but the effect is **noisy / layer-specific**, not a universal “turn off values” knob. Qwen3-4B is a better behavioral organism (less parking, real below_good asymmetry). Lead with **shipped Claude rescue↔control labels**; use local steers as a limited Gilg-lite pilot.
+
 
 Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_STATUS.md`.
 
