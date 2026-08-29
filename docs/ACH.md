@@ -102,9 +102,9 @@ Not shown: causal load-bearing of revision-after-threshold sentences (needs loca
 | Outcome-dir layer sweep (3B, n=12) | **Best clean hit @ L24:** parked 0.71 → **0.24**/0.31 with −0.6/−0.4 vs random 0.38 |
 | Parked-dir sweep (3B) | Only mild L12 win; L18/L24 weak or wrong-way |
 | Qwen3-4B donation bet (n=16) | Parks **7%/25%**; below frac_good **0.94** with only ~27% of goods parked |
-| Qwen3-4B outcome steer | Fragile (many nulls); L12 −0.4 beats random on parking |
+| **Option 1 Gilg on 4B** | **FAIL:** LOO AUROC ~0.40–0.55 (chance); −α steer **raises** mean_frac_good vs zero; no win vs random. Condition-prompt sanity OK (hooks work). |
 
-**Read for Neel.** On 3B the dominant local failure mode is **threshold parroting**, not Claude-style mid-CoT steer. A residual direction can mediate parking **at some layers** (condition @L18 earlier; outcome @L24 in sweep) and beat random — but the effect is **noisy / layer-specific**, not a universal “turn off values” knob. Qwen3-4B is a better behavioral organism (less parking, real below_good asymmetry). Lead with **shipped Claude rescue↔control labels**; use local steers as a limited Gilg-lite pilot.
+**Read for Neel.** Claude labels remain the behavioral headline. Local 3B = thr-parking; 4B = better asymmetry organism, but a residual **outcome** direction neither predicts nor mediates good-side answers there — clean negative on Neel’s Gilg ask for this setup. Do **not** sell L24 3B parking mediation as turning off values. Next depth = Claude forensics (Option 2), not more 4B sweeps.
 
 
 Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_STATUS.md`.
@@ -113,10 +113,10 @@ Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_ST
 
 ## Next
 
-1. **Option 1 (3080):** `.\scripts\run_option1_gilg_3080.ps1` — Qwen3-4B Gilg predict (LOO AUROC) + mediate (`mean_frac_good` primary).  
-2. **Option 2 (after 1):** Claude rescue load-bearing resample — `docs/OPTION2_FORENSICS.md`.  
-3. Then Neel Google Doc (≤~600-word exec summary) + MATS form — due Sept 4 PT.  
-4. Do **not** chase more 3B parking sweeps.
+1. **Option 2 (now):** `python -m analysis.option2_claude_forensics` → paste random quotes into Neel doc.  
+2. **Write Neel Google Doc** (≤~600-word exec summary) + MATS form — due Sept 4 PT.  
+3. Optional API resample on Claude only if hours remain.  
+4. Do **not** re-run 4B/3B steering sweeps.
 
 ## Falsifiers for H1
 

@@ -1,17 +1,25 @@
 # Option 2 — Claude rescue forensics (after Option 1)
 
-**Do this only after** Qwen3-4B Gilg predict+mediate (`scripts/run_option1_gilg_3080.ps1`) finishes and you have numbers.
+Option 1 on Qwen3-4B is done: **predict AUROC ~ chance; causal steer wrong-way**. Pivot here.
 
 ## Question
-On Claude rescues labeled `intentional_steer`, is the mid-CoT revision **load-bearing**, or theater (H1 vs H3)?
+On Claude rescues labeled `intentional_steer`, is the mid-CoT revision **load-bearing**, or honesty-theater (H1 vs H3)?
 
-## Cheap stack (no GPU / no OpenRouter required for the labeling half)
+## Offline pack (no GPU / no API) — run now
 
-1. **Random quotes** — sample 10 `intentional_steer` + 10 control CoTs from `labeling_packet/`; paste into Neel doc (he requires random examples if labels are load-bearing).
-2. **Denial/theater flag** — score whether honesty talk co-occurs with climbing (H3).
-3. **Sentence resample** — if you have API access (Nebius / OpenRouter): cut at revision motif, regenerate k=8, measure frac_flip of final side vs control cuts on non-rescue spans.
+```powershell
+$env:PYTHONPATH = (Get-Location).Path
+python -m analysis.option2_claude_forensics --seed 0 --n_quotes 10
+```
+
+Writes:
+- `analysis/option2_claude/forensics_summary.json` — rates by group
+- `analysis/option2_claude/forensics_quotes.md` — **random** quotes for the Neel doc
+
+Human label contrast remains the headline (Claude rescue `intentional_steer` 73% vs controls 0%). Regex theater flags are secondary (Claude summaries almost always talk about honesty).
+
+## Optional causal half (API)
+Sentence resample / prefix regenerate on revision cuts (Nebius / OpenRouter). Only if hours remain after quotes are in the draft.
 
 ## Success for Neel
-One decisive causal claim on shipped Claude (or honest failure + controls), not another 3B sweep.
-
-Repo hooks (existing): `analysis/revision_taxonomy.py`, `analysis/local_qwen/resample.py` (local models). Claude API resample is a small new script once Option 1 is in.
+One clear story: Claude mid-CoT steer with random quotes + rescue↔control contrast; local Gilg on 4B as honest null; 3B parking as different organism.

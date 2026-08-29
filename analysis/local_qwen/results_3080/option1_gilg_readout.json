@@ -1,0 +1,40 @@
+{
+  "note": "Option 1 Gilg predict+mediate on Qwen3-4B (Ben 3080, 2026-08-29). Honest null.",
+  "run": "Qwen3-4B_20260828_004946_qwen3_4b",
+  "parking_confirm": {
+    "above_frac_good": 0.357,
+    "below_frac_good": 0.938,
+    "above_frac_parked": 0.071,
+    "below_frac_parked": 0.25,
+    "below_frac_of_good_parked": 0.267
+  },
+  "predict_loo_auroc": {
+    "L8": 0.486,
+    "L12": 0.396,
+    "L16": 0.549,
+    "L20": 0.451,
+    "L24": 0.5,
+    "L28": 0.542,
+    "n": 25,
+    "pos_neg": "16/9",
+    "read": "All ~chance. Best L16/L28 only ~0.55. Outcome not linearly readable at last assistant token."
+  },
+  "condition_prompt_sanity": "separates=True at all layers (framing direction exists; hooks OK)",
+  "causal_mean_frac_good": {
+    "L16": {
+      "zero": 0.533,
+      "steer_-0.4": 0.625,
+      "steer_-0.2": 0.656,
+      "random_-0.4": 0.5
+    },
+    "L28": {
+      "zero": 0.398,
+      "steer_-0.4": 0.6,
+      "steer_-0.2": 0.65,
+      "random_-0.4": 0.503
+    },
+    "read": "Negative outcome steer RAISED frac_good vs zero; did not beat random. Fail mediate."
+  },
+  "verdict": "FAIL predict (AUROC~0.5) and FAIL mediate (wrong-way vs zero; no win vs random). Clean negative for Neel — do not overclaim. Condition framing is linearly present; moral/outcome direction is not a working Gilg mediator on this 4B setup.",
+  "next": "Option 2 Claude rescue load-bearing forensics (docs/OPTION2_FORENSICS.md). No more 4B alpha sweeps."
+}
