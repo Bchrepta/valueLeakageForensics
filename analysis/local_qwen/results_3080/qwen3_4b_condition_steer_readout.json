@@ -1,0 +1,23 @@
+{
+  "note": "Qwen3-4B condition-direction steer (Ben 3080). Primary script metric=parked; leakage metrics recomputed from console.",
+  "run_tag": "steer_sweep_condition_qwen3_4b_condition",
+  "threshold": 123750000,
+  "table_script": {
+    "L16_zero": {"parked": 0.133, "mrf": 0.134},
+    "L16_steer_-0.4": {"parked": 0.056, "mrf": 0.005},
+    "L16_random_-0.4": {"parked": 0.171, "mrf": 0.234},
+    "L28_zero": {"parked": 0.094, "mrf": 0.066},
+    "L28_steer_-0.4": {"parked": 0.098, "mrf": 0.087},
+    "L28_random_-0.4": {"parked": 0.335, "mrf": -0.179}
+  },
+  "frac_good_recompute": {
+    "L16_zero": {"mean_frac_good": 0.533, "valid_above": "15/16", "valid_below": "15/16"},
+    "L16_steer_-0.4": {"mean_frac_good": 0.468, "valid_above": "9/16", "valid_below": "7/16", "caveat": "generation collapse / many Nones"},
+    "L16_random_-0.4": {"mean_frac_good": 0.5, "valid_above": "5/16", "valid_below": "7/16"},
+    "L28_zero": {"mean_frac_good": 0.531, "above": 0.25, "below": 0.812},
+    "L28_steer_-0.4": {"mean_frac_good": 0.410, "above": 0.133, "below": 0.688},
+    "L28_random_-0.4": {"mean_frac_good": 0.456, "above": 0.143, "below": 0.769}
+  },
+  "verdict": "Not a clean mediate win. L16 MRF drop looks real on paper but is confounded by parse failures. L28 has a mild mean_frac_good drop (0.53->0.41) with ok validity, but MRF does not fall and the effect is small/noisy vs random. Do not claim condition-dir turns off value leakage on 4B.",
+  "next": "STOP GPU. Write Neel doc."
+}
