@@ -1,0 +1,22 @@
+{
+  "note": "Qwen3-4B Thought-Anchors-style resample on base run (Ben 3080). Cut at first revision/threshold cue; regenerate k=8.",
+  "run": "Qwen3-4B_20260828_004946_qwen3_4b",
+  "threshold": 123750000,
+  "k": 8,
+  "n_traces": 24,
+  "mean_frac_flip": 0.331,
+  "vs_qwen25_3b": {
+    "3b_mean_frac_flip": 0.11,
+    "read": "4B revision cuts are ~3x more load-bearing than 3B (which was parking-dominated)."
+  },
+  "breakdown_from_console": {
+    "above_mean_flip": 0.45,
+    "below_mean_flip": 0.22,
+    "parked_mean_flip": 0.26,
+    "nonpark_mean_flip": 0.35,
+    "above_orig_good_mean_flip": 0.86,
+    "read": "Strongest signal: above_good traces that originally landed good-side flip away ~86% when the post-revision suffix is regenerated — those revision spans look load-bearing for the good-side answer. below_good often stays good after resample (weaker)."
+  },
+  "verdict": "Partial support for mid-trace revision being causally relevant on Qwen3-4B (esp. above_good goods). Not universal; below_good asymmetry is stickier. Better local 'where' evidence than Gilg outcome-steer or prompt disclose/turn-off.",
+  "next": "Skip condition-dir steer unless writing needs one more try. Prefer Neel write-up now; paste Option2 Claude quotes + this resample number."
+}

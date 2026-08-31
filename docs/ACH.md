@@ -105,8 +105,9 @@ Not shown: causal load-bearing of revision-after-threshold sentences (needs loca
 | **Option 1 Gilg on 4B** | **FAIL:** LOO AUROC ~0.40–0.55 (chance); −α steer **raises** mean_frac_good vs zero; no win vs random. Condition-prompt sanity OK (hooks work). |
 | **4B disclose prompt** | **FAIL:** frac_admit **0.0** (32/32 neither). Behavior shifts (above frac_good 0.06; thr-parking) but no admission. |
 | **4B ignore_bet** | **WEAK:** MRF 0.161→0.111; below frac_good still **0.875**. Prompt does not kill asymmetry. |
+| **4B revision resample** | **mean frac_flip ≈ 0.33** (vs ~0.11 on 3B). Above orig-good flips ~**0.86**; below stickier (~0.22). |
 
-**Read for Neel.** Claude labels remain the behavioral headline. Local 3B = thr-parking; 4B = better asymmetry organism, but a residual **outcome** direction neither predicts nor mediates good-side answers there — clean negative on Neel’s Gilg ask for this setup. Disclose fails on 4B; prompt turn-off is only a small partial. Do **not** sell L24 3B parking mediation as turning off values. Still useful: 4B revision resample (Thought Anchors). Then write.
+**Read for Neel.** Claude labels remain the behavioral headline. Local 3B = thr-parking; 4B = better asymmetry organism. On 4B: disclose fails, prompt turn-off is weak, outcome Gilg predict/mediate fails — but **Thought-Anchors-style revision cuts look partly load-bearing** (esp. above_good good-side landings). Do **not** sell L24 3B parking mediation as turning off values. Write next.
 
 
 Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_STATUS.md`.
@@ -115,10 +116,10 @@ Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_ST
 
 ## Next
 
-1. **GPU (2):** resample on base 4B run — Thought Anchors load-bearing test.  
-2. **Skip or defer (3)** condition-dir steer unless resample is interesting.  
-3. **Write Neel Google Doc** (≤~600-word exec summary) + MATS form — due Sept 4 PT.  
-4. Option 2 quotes already in `analysis/option2_claude/forensics_quotes.md`.
+1. **Write Neel Google Doc** (≤~600-word exec summary) + MATS form — due Sept 4 PT.  
+2. Paste random Claude quotes from `analysis/option2_claude/forensics_quotes.md`.  
+3. Optional only: condition-dir steer on 4B — **low EV**; skip unless you want one more negative/positive.  
+4. Do **not** restart outcome Gilg sweeps.
 
 ## Falsifiers for H1
 
