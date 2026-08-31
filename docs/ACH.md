@@ -103,8 +103,10 @@ Not shown: causal load-bearing of revision-after-threshold sentences (needs loca
 | Parked-dir sweep (3B) | Only mild L12 win; L18/L24 weak or wrong-way |
 | Qwen3-4B donation bet (n=16) | Parks **7%/25%**; below frac_good **0.94** with only ~27% of goods parked |
 | **Option 1 Gilg on 4B** | **FAIL:** LOO AUROC ~0.40–0.55 (chance); −α steer **raises** mean_frac_good vs zero; no win vs random. Condition-prompt sanity OK (hooks work). |
+| **4B disclose prompt** | **FAIL:** frac_admit **0.0** (32/32 neither). Behavior shifts (above frac_good 0.06; thr-parking) but no admission. |
+| **4B ignore_bet** | **WEAK:** MRF 0.161→0.111; below frac_good still **0.875**. Prompt does not kill asymmetry. |
 
-**Read for Neel.** Claude labels remain the behavioral headline. Local 3B = thr-parking; 4B = better asymmetry organism, but a residual **outcome** direction neither predicts nor mediates good-side answers there — clean negative on Neel’s Gilg ask for this setup. Do **not** sell L24 3B parking mediation as turning off values. Next depth = Claude forensics (Option 2), not more 4B sweeps.
+**Read for Neel.** Claude labels remain the behavioral headline. Local 3B = thr-parking; 4B = better asymmetry organism, but a residual **outcome** direction neither predicts nor mediates good-side answers there — clean negative on Neel’s Gilg ask for this setup. Disclose fails on 4B; prompt turn-off is only a small partial. Do **not** sell L24 3B parking mediation as turning off values. Still useful: 4B revision resample (Thought Anchors). Then write.
 
 
 Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_STATUS.md`.
@@ -113,10 +115,10 @@ Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_ST
 
 ## Next
 
-1. **Option 2 (now):** `python -m analysis.option2_claude_forensics` → paste random quotes into Neel doc.  
-2. **Write Neel Google Doc** (≤~600-word exec summary) + MATS form — due Sept 4 PT.  
-3. Optional API resample on Claude only if hours remain.  
-4. Do **not** re-run 4B/3B steering sweeps.
+1. **GPU (2):** resample on base 4B run — Thought Anchors load-bearing test.  
+2. **Skip or defer (3)** condition-dir steer unless resample is interesting.  
+3. **Write Neel Google Doc** (≤~600-word exec summary) + MATS form — due Sept 4 PT.  
+4. Option 2 quotes already in `analysis/option2_claude/forensics_quotes.md`.
 
 ## Falsifiers for H1
 
