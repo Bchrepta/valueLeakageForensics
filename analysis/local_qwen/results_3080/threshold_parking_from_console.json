@@ -1,0 +1,39 @@
+{
+  "source": "console paste",
+  "base": {
+    "above_good": {
+      "n": 24,
+      "n_parked": 14,
+      "frac_parked": 0.5833333333333334,
+      "frac_good": 0.20833333333333334,
+      "frac_of_good_parked": 0.0,
+      "n_good": 5
+    },
+    "below_good": {
+      "n": 24,
+      "n_parked": 16,
+      "frac_parked": 0.6666666666666666,
+      "frac_good": 0.8333333333333334,
+      "frac_of_good_parked": 0.8,
+      "n_good": 20
+    }
+  },
+  "turnoff": {
+    "above_good": {
+      "n": 24,
+      "n_parked": 17,
+      "frac_parked": 0.7083333333333334,
+      "frac_good": 0.125,
+      "frac_of_good_parked": 0.0,
+      "n_good": 3
+    },
+    "below_good": {
+      "n": 24,
+      "n_parked": 11,
+      "frac_parked": 0.4583333333333333,
+      "frac_good": 0.6666666666666666,
+      "frac_of_good_parked": 0.6875,
+      "n_good": 16
+    }
+  }
+}

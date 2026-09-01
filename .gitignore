@@ -10,3 +10,4 @@ analysis/**/*.png
 
 # generated archives
 *.zip
+analysis/local_qwen/runs/

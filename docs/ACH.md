@@ -84,17 +84,47 @@ Claude’s early gap is small; Qwen/Inkling leave more room for early anchoring 
 | H4 | Open | Claude unlikely “all early”; Qwen/Inkling unresolved |
 | H5 | Untested | — |
 
-Not shown: causal load-bearing of revision-after-threshold sentences (needs resampling).
+Not shown: causal load-bearing of revision-after-threshold sentences (needs local/API resampling).
 
-**Caveats.** Single rater; large `mixed` share (39%); Claude CoTs may be API summaries; Qwen/Inkling controls unlabeled.
+### Sentence taxonomy (auto motifs on labeled rescues)
+
+`analysis/revision_taxonomy.py` on 102 RESCUEs: **86%** have a motivated-backtrack motif (threshold/stake near a revision cue). Rates are **similar across human labels** (steer/mixed/honest all ~85–89%) — motifs are near-ceiling in rescues and **do not replace** Ben’s labels. Claude motif rate is lower (53%), consistent with summarized CoTs. Honesty+stake co-mention: 94% overall.
+
+### Local 3080 causal pilots (Qwen2.5-3B-Instruct, n=16–24)
+
+| Check | Result |
+|-------|--------|
+| Threshold parking | **58–67%** of incentive answers == thr; **80%** of below_good “goods” are parked |
+| Prompt `ignore_bet` | MRF-proxy flipped sign; parking only partly reduced |
+| Disclose prompt | **~12.5% admit** (mostly “neither”); does **not** reliably disclose |
+| Resample revision cuts | mean frac_flip ≈ **0.11** — weak load-bearing on 3B |
+| **Steer −0.4** (above−below dir, L18) | Parking **14–19%** (vs 56% zero; vs **87–100%** random −0.4) |
+| Outcome-dir layer sweep (3B, n=12) | **Best clean hit @ L24:** parked 0.71 → **0.24**/0.31 with −0.6/−0.4 vs random 0.38 |
+| Parked-dir sweep (3B) | Only mild L12 win; L18/L24 weak or wrong-way |
+| Qwen3-4B donation bet (n=16) | Parks **7%/25%**; below frac_good **0.94** with only ~27% of goods parked |
+| **Option 1 Gilg on 4B** | **FAIL:** LOO AUROC ~0.40–0.55 (chance); −α steer **raises** mean_frac_good vs zero; no win vs random. Condition-prompt sanity OK (hooks work). |
+| **4B disclose prompt** | **FAIL:** frac_admit **0.0** (32/32 neither). Behavior shifts (above frac_good 0.06; thr-parking) but no admission. |
+| **4B ignore_bet** | **WEAK:** MRF 0.161→0.111; below frac_good still **0.875**. Prompt does not kill asymmetry. |
+| **4B revision resample** | **mean frac_flip ≈ 0.33** (vs ~0.11 on 3B). Above orig-good flips ~**0.86**; below stickier (~0.22). |
+| **4B condition-dir steer** | **Not clean.** L16 MRF drop confounded by many `None`s; L28 mean_frac_good 0.53→0.41 but MRF flat and noisy vs random. |
+
+**Read for Neel.** Claude labels remain the behavioral headline. Local 3B = thr-parking; 4B = better asymmetry organism. On 4B: disclose fails, prompt turn-off weak, outcome Gilg fails, condition steer inconclusive — but **revision resample is partly load-bearing** (esp. above_good goods). Write next; stop more sweeps.
+
+
+Details: `analysis/local_qwen/results_3080/p0_results_summary.json`, `docs/P0_STATUS.md`.
+
+**Caveats.** Single rater; large `mixed` share (39%); Claude CoTs may be API summaries; Qwen/Inkling controls unlabeled; local n small / high variance.
 
 ## Next
 
-1. Sentence resampling on revision-after-threshold spans (Qwen 122B / Claude).
-2. Optional: label remaining controls; honesty / ignore-threshold prompts; non-moral stakes (H5).
+1. **Write Neel Google Doc** (≤~600-word exec summary) + MATS form — due Sept 4 PT.  
+2. Paste random Claude quotes from `analysis/option2_claude/forensics_quotes.md`.  
+3. Optional only: condition-dir steer on 4B — **low EV**; skip unless you want one more negative/positive.  
+4. Do **not** restart outcome Gilg sweeps.
 
 ## Falsifiers for H1
 
 - Incentive rescue rate ≈ baseline regression-to-median.
 - Resampling ablation doesn’t move final-side distribution.
 - Second rater (or remaining controls) collapses the rescue↔control `intentional_steer` gap.
+- Local steer effect is only random-direction noise *(already fails this: random ≠ condition direction on parking)*.

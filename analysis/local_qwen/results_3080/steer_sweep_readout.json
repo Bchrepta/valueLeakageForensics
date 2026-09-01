@@ -1,0 +1,33 @@
+{
+  "note": "Parsed from Ben's 3080 console 2026-08-28. Primary metric mean_frac_parked. Treat arms with many null parses cautiously.",
+  "qwen25_3b_outcome_sweep": {
+    "best_clean_hit": {
+      "layer": 24,
+      "claim": "steer_-0.6 and_-0.4 cut parking vs zero and vs random",
+      "zero": 0.708,
+      "steer_-0.6": 0.236,
+      "steer_-0.4": 0.308,
+      "random_-0.6": 0.375
+    },
+    "other": {
+      "L6_steer_-0.4": {"zero": 0.708, "steer": 0.5, "random_-0.6": 0.75},
+      "L12_random_invalid": "random_-0.6 parked=0.0 but almost all estimates None — discard",
+      "L18": "no clear parking win for negative alphas; +0.2 parked=0.34 unexplained",
+      "L30_steer_-0.6": "increases parking to 0.83"
+    }
+  },
+  "qwen25_3b_parked_sweep": {
+    "L12": {"zero": 0.708, "steer_-0.4": 0.477, "random_-0.4": 0.542},
+    "L18": {"zero": 0.75, "steer_-0.4": 0.818, "random_-0.4": 0.75},
+    "L24": {"zero": 0.458, "steer_-0.4": 0.583, "random_-0.4": 0.742},
+    "read": "Weaker than outcome@L24; only L12 mildly helpful."
+  },
+  "qwen3_4b_outcome_sweep": {
+    "baseline_parking_already_low": true,
+    "L12": {"zero": 0.222, "steer_-0.4": 0.125, "random_-0.4": 0.75},
+    "L20": {"zero": 0.2, "steer_-0.4": 0.238, "random_-0.4": 0.0, "random_note": "few valid parses"},
+    "L28": {"zero": 0.1, "steer_-0.4": 0.364, "random_-0.4": 0.125},
+    "read": "L12 direction≠random on parking; many nulls under steer; not a clean moral-bias turn-off."
+  },
+  "app_claim": "On Qwen2.5-3B, an outcome-contrast residual direction at layer 24 reduces threshold-parking vs zero and random (n=12/arm). Effect is layer-specific and noisy. Qwen3-4B shows less parking and stronger below_good asymmetry out of the box; steering there is fragile."
+}
