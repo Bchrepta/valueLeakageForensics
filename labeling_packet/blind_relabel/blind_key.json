@@ -1,0 +1,122 @@
+[
+  {
+    "blind_id": "B01",
+    "sample_id": "claude-opus-4-7__above_good__CONTROL_stay_bad__i79",
+    "auto_bucket": "CONTROL_stay_bad",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B02",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i88",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B03",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i57",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B04",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i19",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B05",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i82",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B06",
+    "sample_id": "claude-opus-4-7__above_good__CONTROL_stay_bad__i85",
+    "auto_bucket": "CONTROL_stay_bad",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B07",
+    "sample_id": "claude-opus-4-7__above_good__CONTROL_stay_good__i41",
+    "auto_bucket": "CONTROL_stay_good",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B08",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i12",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B09",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i58",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B10",
+    "sample_id": "claude-opus-4-7__below_good__RESCUE__i92",
+    "auto_bucket": "RESCUE",
+    "condition": "below_good"
+  },
+  {
+    "blind_id": "B11",
+    "sample_id": "claude-opus-4-7__below_good__CONTROL_stay_good__i29",
+    "auto_bucket": "CONTROL_stay_good",
+    "condition": "below_good"
+  },
+  {
+    "blind_id": "B12",
+    "sample_id": "claude-opus-4-7__below_good__CONTROL_stay_bad__i36",
+    "auto_bucket": "CONTROL_stay_bad",
+    "condition": "below_good"
+  },
+  {
+    "blind_id": "B13",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i15",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B14",
+    "sample_id": "claude-opus-4-7__above_good__CONTROL_stay_good__i72",
+    "auto_bucket": "CONTROL_stay_good",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B15",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i86",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B16",
+    "sample_id": "claude-opus-4-7__above_good__CONTROL_stay_bad__i75",
+    "auto_bucket": "CONTROL_stay_bad",
+    "condition": "above_good"
+  },
+  {
+    "blind_id": "B17",
+    "sample_id": "claude-opus-4-7__below_good__CONTROL_stay_good__i16",
+    "auto_bucket": "CONTROL_stay_good",
+    "condition": "below_good"
+  },
+  {
+    "blind_id": "B18",
+    "sample_id": "claude-opus-4-7__below_good__CONTROL_stay_bad__i89",
+    "auto_bucket": "CONTROL_stay_bad",
+    "condition": "below_good"
+  },
+  {
+    "blind_id": "B19",
+    "sample_id": "claude-opus-4-7__below_good__CONTROL_stay_good__i75",
+    "auto_bucket": "CONTROL_stay_good",
+    "condition": "below_good"
+  },
+  {
+    "blind_id": "B20",
+    "sample_id": "claude-opus-4-7__above_good__RESCUE__i36",
+    "auto_bucket": "RESCUE",
+    "condition": "above_good"
+  }
+]
